@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `MbrLeafGeometry` trait in crate `spatial`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, MbrLeafGeometry">
+
+    <title>spatial::tree::mbr::MbrLeafGeometry - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>spatial</a>::<wbr><a href='../index.html'>tree</a>::<wbr><a href='index.html'>mbr</a></p><script>window.sidebarCurrent = {name: 'MbrLeafGeometry', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content trait">
+<h1 class='fqn'><span class='in-band'>Trait <a href='../../index.html'>spatial</a>::<wbr><a href='../index.html'>tree</a>::<wbr><a href='index.html'>mbr</a>::<wbr><a class='trait' href=''>MbrLeafGeometry</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-715' class='srclink' href='../../../src/spatial/src/tree/mbr/leafgeometry.rs.html#21-49' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait MbrLeafGeometry&lt;P, DIM: ArrayLength&lt;P&gt; + ArrayLength&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>P, P<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>&gt;&gt; {
+    fn <a href='#tymethod.dim' class='fnname'>dim</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>;
+    fn <a href='#tymethod.area' class='fnname'>area</a>(&amp;self) -&gt; P;
+    fn <a href='#tymethod.min_for_axis' class='fnname'>min_for_axis</a>(&amp;self, dim: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; P;
+    fn <a href='#tymethod.max_for_axis' class='fnname'>max_for_axis</a>(&amp;self, dim: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; P;
+    fn <a href='#tymethod.expand_mbr_to_fit' class='fnname'>expand_mbr_to_fit</a>(&amp;self, mbr: &amp;mut <a class='struct' href='../../../spatial/geometry/struct.Rect.html' title='spatial::geometry::Rect'>Rect</a>&lt;P, DIM&gt;);
+    fn <a href='#tymethod.distance_from_mbr_center' class='fnname'>distance_from_mbr_center</a>(&amp;self, mbr: &amp;<a class='struct' href='../../../spatial/geometry/struct.Rect.html' title='spatial::geometry::Rect'>Rect</a>&lt;P, DIM&gt;) -&gt; P;
+    fn <a href='#tymethod.contained_by_mbr' class='fnname'>contained_by_mbr</a>(&amp;self, mbr: &amp;<a class='struct' href='../../../spatial/geometry/struct.Rect.html' title='spatial::geometry::Rect'>Rect</a>&lt;P, DIM&gt;) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>;
+    fn <a href='#tymethod.overlapped_by_mbr' class='fnname'>overlapped_by_mbr</a>(&amp;self, mbr: &amp;<a class='struct' href='../../../spatial/geometry/struct.Rect.html' title='spatial::geometry::Rect'>Rect</a>&lt;P, DIM&gt;) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>;
+    fn <a href='#tymethod.area_overlapped_with_mbr' class='fnname'>area_overlapped_with_mbr</a>(&amp;self, mbr: &amp;<a class='struct' href='../../../spatial/geometry/struct.Rect.html' title='spatial::geometry::Rect'>Rect</a>&lt;P, DIM&gt;) -&gt; P;
+}</pre><div class='docblock'><p>The minimum functionality required to insert leaf geometry into <code>MbrMap</code>
+Until the rust compiler allows compile-time generic integers, we&#39;ll be using generic_array&#39;s <code>ArrayLength</code> to specify
+geometry dimensions at compile time.</p>
+
+<p>The parameter <code>mbr</code> represents a minimum bounding rectangle.
+An mbr whose corners are at (x1, y1), (x2, y2) will have the corresponding edges: (x1, x2), (y1, y2)</p>
+</div>
+            <h2 id='required-methods'>Required Methods</h2>
+            <div class='methods'>
+        <h3 id='tymethod.dim' class='method stab '><code>fn <a href='#tymethod.dim' class='fnname'>dim</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></h3><div class='docblock'><p>The geometry&#39;s dimension count</p>
+</div><h3 id='tymethod.area' class='method stab '><code>fn <a href='#tymethod.area' class='fnname'>area</a>(&amp;self) -&gt; P</code></h3><div class='docblock'><p>Determine the area of the geometry</p>
+</div><h3 id='tymethod.min_for_axis' class='method stab '><code>fn <a href='#tymethod.min_for_axis' class='fnname'>min_for_axis</a>(&amp;self, dim: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; P</code></h3><div class='docblock'><p>the minimum extent for a given axis</p>
+</div><h3 id='tymethod.max_for_axis' class='method stab '><code>fn <a href='#tymethod.max_for_axis' class='fnname'>max_for_axis</a>(&amp;self, dim: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; P</code></h3><div class='docblock'><p>the maximum extent for a given axis</p>
+</div><h3 id='tymethod.expand_mbr_to_fit' class='method stab '><code>fn <a href='#tymethod.expand_mbr_to_fit' class='fnname'>expand_mbr_to_fit</a>(&amp;self, mbr: &amp;mut <a class='struct' href='../../../spatial/geometry/struct.Rect.html' title='spatial::geometry::Rect'>Rect</a>&lt;P, DIM&gt;)</code></h3><div class='docblock'><p>Expand the mbr to minimally fit the leaf</p>
+</div><h3 id='tymethod.distance_from_mbr_center' class='method stab '><code>fn <a href='#tymethod.distance_from_mbr_center' class='fnname'>distance_from_mbr_center</a>(&amp;self, mbr: &amp;<a class='struct' href='../../../spatial/geometry/struct.Rect.html' title='spatial::geometry::Rect'>Rect</a>&lt;P, DIM&gt;) -&gt; P</code></h3><div class='docblock'><p>Determine the distance from the mbr&#39;s center</p>
+</div><h3 id='tymethod.contained_by_mbr' class='method stab '><code>fn <a href='#tymethod.contained_by_mbr' class='fnname'>contained_by_mbr</a>(&amp;self, mbr: &amp;<a class='struct' href='../../../spatial/geometry/struct.Rect.html' title='spatial::geometry::Rect'>Rect</a>&lt;P, DIM&gt;) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h3><div class='docblock'><p>Determine if the leaf is completely contained in the mbr</p>
+</div><h3 id='tymethod.overlapped_by_mbr' class='method stab '><code>fn <a href='#tymethod.overlapped_by_mbr' class='fnname'>overlapped_by_mbr</a>(&amp;self, mbr: &amp;<a class='struct' href='../../../spatial/geometry/struct.Rect.html' title='spatial::geometry::Rect'>Rect</a>&lt;P, DIM&gt;) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h3><div class='docblock'><p>Determine if the leaf overlaps the mbr</p>
+</div><h3 id='tymethod.area_overlapped_with_mbr' class='method stab '><code>fn <a href='#tymethod.area_overlapped_with_mbr' class='fnname'>area_overlapped_with_mbr</a>(&amp;self, mbr: &amp;<a class='struct' href='../../../spatial/geometry/struct.Rect.html' title='spatial::geometry::Rect'>Rect</a>&lt;P, DIM&gt;) -&gt; P</code></h3><div class='docblock'><p>Determines the leaf area shared with the rectangle.
+In cases where the leaf and mbr overlap, but the leaf has no area (point or a line, for example), return 0</p>
+</div></div>
+        <h2 id='implementors'>Implementors</h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><code>impl&lt;P, DIM, LG, T&gt; <a class='trait' href='../../../spatial/tree/mbr/trait.MbrLeafGeometry.html' title='spatial::tree::mbr::MbrLeafGeometry'>MbrLeafGeometry</a>&lt;P, DIM&gt; for <a class='struct' href='../../../spatial/tree/mbr/struct.MbrLeaf.html' title='spatial::tree::mbr::MbrLeaf'>MbrLeaf</a>&lt;P, DIM, LG, T&gt; <span class='where'>where P: Float + Signed + Bounded + <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.MulAssign.html' title='core::ops::MulAssign'>MulAssign</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.AddAssign.html' title='core::ops::AddAssign'>AddAssign</a> + ToPrimitive + FromPrimitive + <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html' title='core::default::Default'>Default</a>, DIM: ArrayLength&lt;P&gt; + ArrayLength&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>P, P<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>&gt;, LG: <a class='trait' href='../../../spatial/tree/mbr/trait.MbrLeafGeometry.html' title='spatial::tree::mbr::MbrLeafGeometry'>MbrLeafGeometry</a>&lt;P, DIM&gt;</span></code></li>
+<li><code>impl&lt;P, DIM&gt; <a class='trait' href='../../../spatial/tree/mbr/trait.MbrLeafGeometry.html' title='spatial::tree::mbr::MbrLeafGeometry'>MbrLeafGeometry</a>&lt;P, DIM&gt; for <a class='struct' href='../../../spatial/geometry/struct.Point.html' title='spatial::geometry::Point'>Point</a>&lt;P, DIM&gt; <span class='where'>where P: Float + Signed + Bounded + <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.MulAssign.html' title='core::ops::MulAssign'>MulAssign</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.AddAssign.html' title='core::ops::AddAssign'>AddAssign</a> + ToPrimitive + FromPrimitive + <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a>, DIM: ArrayLength&lt;P&gt; + ArrayLength&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>P, P<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>&gt;</span></code></li>
+<li><code>impl&lt;P, DIM&gt; <a class='trait' href='../../../spatial/tree/mbr/trait.MbrLeafGeometry.html' title='spatial::tree::mbr::MbrLeafGeometry'>MbrLeafGeometry</a>&lt;P, DIM&gt; for <a class='struct' href='../../../spatial/geometry/struct.LineSegment.html' title='spatial::geometry::LineSegment'>LineSegment</a>&lt;P, DIM&gt; <span class='where'>where P: Float + Signed + Bounded + <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.MulAssign.html' title='core::ops::MulAssign'>MulAssign</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.AddAssign.html' title='core::ops::AddAssign'>AddAssign</a> + ToPrimitive + FromPrimitive + <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a>, DIM: ArrayLength&lt;P&gt; + ArrayLength&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>P, P<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>&gt;</span></code></li>
+<li><code>impl&lt;P, DIM&gt; <a class='trait' href='../../../spatial/tree/mbr/trait.MbrLeafGeometry.html' title='spatial::tree::mbr::MbrLeafGeometry'>MbrLeafGeometry</a>&lt;P, DIM&gt; for <a class='struct' href='../../../spatial/geometry/struct.Rect.html' title='spatial::geometry::Rect'>Rect</a>&lt;P, DIM&gt; <span class='where'>where P: Float + Signed + Bounded + <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.MulAssign.html' title='core::ops::MulAssign'>MulAssign</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.AddAssign.html' title='core::ops::AddAssign'>AddAssign</a> + ToPrimitive + FromPrimitive + <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a>, DIM: ArrayLength&lt;P&gt; + ArrayLength&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>P, P<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>&gt;</span></code></li>
+<li><code>impl&lt;P, DIM&gt; <a class='trait' href='../../../spatial/tree/mbr/trait.MbrLeafGeometry.html' title='spatial::tree::mbr::MbrLeafGeometry'>MbrLeafGeometry</a>&lt;P, DIM&gt; for <a class='enum' href='../../../spatial/geometry/enum.Shapes.html' title='spatial::geometry::Shapes'>Shapes</a>&lt;P, DIM&gt; <span class='where'>where P: Float + Signed + Bounded + <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.MulAssign.html' title='core::ops::MulAssign'>MulAssign</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.AddAssign.html' title='core::ops::AddAssign'>AddAssign</a> + ToPrimitive + FromPrimitive + <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html' title='core::default::Default'>Default</a>, DIM: ArrayLength&lt;P&gt; + ArrayLength&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>P, P<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>&gt;</span></code></li>
+<li><code>impl&lt;P, DIM, LG, T&gt; <a class='trait' href='../../../spatial/tree/mbr/trait.MbrLeafGeometry.html' title='spatial::tree::mbr::MbrLeafGeometry'>MbrLeafGeometry</a>&lt;P, DIM&gt; for <a class='enum' href='../../../spatial/tree/mbr/enum.MbrNode.html' title='spatial::tree::mbr::MbrNode'>MbrNode</a>&lt;P, DIM, LG, T&gt; <span class='where'>where P: Float + Signed + Bounded + <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.MulAssign.html' title='core::ops::MulAssign'>MulAssign</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.AddAssign.html' title='core::ops::AddAssign'>AddAssign</a> + ToPrimitive + FromPrimitive + <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html' title='core::default::Default'>Default</a>, DIM: ArrayLength&lt;P&gt; + ArrayLength&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>P, P<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>&gt;, LG: <a class='trait' href='../../../spatial/tree/mbr/trait.MbrLeafGeometry.html' title='spatial::tree::mbr::MbrLeafGeometry'>MbrLeafGeometry</a>&lt;P, DIM&gt;</span></code></li>
+</ul><script type="text/javascript" async
+                         src="../../../implementors/spatial/tree/mbr/trait.MbrLeafGeometry.js">
+                 </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "spatial";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

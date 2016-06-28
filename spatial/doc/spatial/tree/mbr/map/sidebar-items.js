@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Iter","Iter all `Leaf` items matching a query"],["IterMut","Mutably iterate all `Leaf` entries matching a query"],["MbrMap","The generic container interface for spatial maps. Will, at the very least, be able to support R, R+, R*, and X trees"]]});

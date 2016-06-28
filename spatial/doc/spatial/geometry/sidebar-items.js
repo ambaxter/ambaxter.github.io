@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Shapes","A convenience enum that contains `Point`, `LineSegment`, and `Rect`"]],"struct":[["LineSegment","An n-dimensional line segment"],["Point","An n-dimensional point"],["Rect","An n-dimensional rectangle"]]});

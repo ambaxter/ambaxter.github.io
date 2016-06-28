@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["MbrRectQuery","Rect based query"]],"trait":[["MbrQuery","Query trait for navigating the tree"]]});

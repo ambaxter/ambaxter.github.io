@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `RStar` struct in crate `spatial`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, RStar">
+
+    <title>spatial::tree::mbr::RStar - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>spatial</a>::<wbr><a href='../index.html'>tree</a>::<wbr><a href='index.html'>mbr</a></p><script>window.sidebarCurrent = {name: 'RStar', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>spatial</a>::<wbr><a href='../index.html'>tree</a>::<wbr><a href='index.html'>mbr</a>::<wbr><a class='struct' href=''>RStar</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-1322' class='srclink' href='../../../src/spatial/src/tree/mbr/mod.rs.html#33-38' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct RStar&lt;P, DIM, LG, T&gt; {
+    // some fields omitted
+}</pre><div class='docblock'><p>Convenience struct for creating a new R* Tree</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;P, DIM, LG, T&gt; <a class='struct' href='../../../spatial/tree/mbr/struct.RStar.html' title='spatial::tree::mbr::RStar'>RStar</a>&lt;P, DIM, LG, T&gt; <span class='where'>where P: Float + Signed + Bounded + <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.MulAssign.html' title='core::ops::MulAssign'>MulAssign</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.AddAssign.html' title='core::ops::AddAssign'>AddAssign</a> + ToPrimitive + FromPrimitive + <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html' title='core::default::Default'>Default</a>, DIM: ArrayLength&lt;P&gt; + ArrayLength&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>P, P<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>&gt; + <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a>, LG: <a class='trait' href='../../../spatial/tree/mbr/trait.MbrLeafGeometry.html' title='spatial::tree::mbr::MbrLeafGeometry'>MbrLeafGeometry</a>&lt;P, DIM&gt;</span></code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='type' href='../../../spatial/tree/mbr/type.RStarTree.html' title='spatial::tree::mbr::RStarTree'>RStarTree</a>&lt;P, DIM, LG, T&gt;</code></h4>
+<div class='docblock'><p>Create a new R* tree with min and max children lengths set to 25 and 64, respectively</p>
+</div><h4 id='method.new_with_max' class='method'><code>fn <a href='#method.new_with_max' class='fnname'>new_with_max</a>(max: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; <a class='type' href='../../../spatial/tree/mbr/type.RStarTree.html' title='spatial::tree::mbr::RStarTree'>RStarTree</a>&lt;P, DIM, LG, T&gt;</code></h4>
+<div class='docblock'><p>Create a new R* tree with max children lengths as provided. min length will be set to 0.3 * max</p>
+</div><h4 id='method.new_with_options' class='method'><code>fn <a href='#method.new_with_options' class='fnname'>new_with_options</a>(max: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, reinsert_p: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f32.html'>f32</a>, split_p: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f32.html'>f32</a>, choose_subtree_p: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; <a class='type' href='../../../spatial/tree/mbr/type.RStarTree.html' title='spatial::tree::mbr::RStarTree'>RStarTree</a>&lt;P, DIM, LG, T&gt;</code></h4>
+<div class='docblock'><p>Creates a mew R* tree with options as provided. min children will be set to reinsert_p.min(split_p) * max</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "spatial";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

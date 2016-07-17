@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["BitArray","The bitarray type."],["Blocks","An iterator over the blocks of a `BitArray`."],["IntoIter",""],["Iter","An iterator for `BitArray`."]],"trait":[["BitsIn",""]],"type":[["BitsInOut",""]]});
+initSidebarItems({"struct":[["BitArray","The bitarray type."],["Blocks","An iterator over the blocks of a `BitArray`."],["IntoIter",""],["Iter","An iterator for `BitArray`."]],"trait":[["BitsIn","Traits for determing how many bits a primitive contains"]],"type":[["BitsInOut",""]]});

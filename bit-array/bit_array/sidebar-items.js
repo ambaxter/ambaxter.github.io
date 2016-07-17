@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["BitArray","The bitarray type."],["Blocks","An iterator over the blocks of a `BitArray`."],["IntoIter",""],["Iter","An iterator for `BitArray`."]],"trait":[["BitsIn",""]],"type":[["BitsInOut",""]]});

@@ -2,7 +2,7 @@
 layout: post
 title:  "libsolv - A case study in interfacing with C - Part 1"
 date:   2017-07-14 15:00:00 -0500
-categories: rust libsolv bindgen
+categories: rust libsolv
 ---
 
 This is the first of several series detailing how one would use Rust in real world scenarios. In this series, I will detail the trials, tribulations, and (hopefully) triumphs in creating a Rust interface to a reasonably complex C library: [libsolv](https://github.com/opensuse/libsolv) and, by extension, libsolvext. 
